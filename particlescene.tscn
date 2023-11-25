@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cowknl3ytoi5j"]
+
+[ext_resource type="Script" path="res://particlespawn.gd" id="1_h1ejf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohr13"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="Gradient" id="Gradient_ddo63"]
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h6s1h"]
+gradient = SubResource("Gradient_ddo63")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7dmus"]
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+gravity = Vector3(2.08165e-12, -4, 2.08165e-12)
+scale_min = 0.2
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_h6s1h")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pubv2"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ohr13")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_7dmus")
+draw_pass_1 = SubResource("BoxMesh_pubv2")
+script = ExtResource("1_h1ejf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.887815, -0.193032, 0.417759, 3.16621e-16, 0.907777, 0.419452, -0.4602, -0.372396, 0.805939, 1.64975, 1.87235, 2.99879)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.820012, -0.572346, 0, 0.572346, 0.820012, 0, 0, 0, 1, -4.10579, 1.24405, 0)
